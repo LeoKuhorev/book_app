@@ -9,9 +9,23 @@
   <link rel="stylesheet" href="../../styles/layout.css">
   <link rel="stylesheet" href="../../styles/modules.css">
   <link rel="stylesheet" href="../../styles/icons.css">
-  <title>Hello</title>
+  <title>Search</title>
 </head>
 <body>
-  <h1>proof of live</h1>
+  <h2>Search by Title or Author</h2>
+  <form action="/results" method="POST">
+    <input type="text" name="search" placeholder="Enter a title or author" required>
+    <fieldset>
+      <label for="title">
+        <span>Title</span>
+        <input type="radio" name="search" value="title" required>
+      </label>
+      <label for="author">
+        <span>Author</span>
+        <input type="radio" name="search" value="author" required>
+      </label>
+    </fieldset>
+    <button type="submit">Search the Google Books API</button>
+  </form>
 </body>
 </html>
