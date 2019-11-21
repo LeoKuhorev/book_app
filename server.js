@@ -22,12 +22,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.status(200).render('pages/index');
-  console.log('get', req.body);
 });
 
-app.post('/results', (req, res) => {
-  res.status(200).render('pages/results');
-  console.log('post', req.body);
+app.post('/searches', (req, res) => {
+  let criteria = req.body.search[1] === 'author' ? 'inauthor' : 'intitle';
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${criteria}:${req.body.search[0]}`
+
+  superagent.get(url)
+    .then(result => result.body.items.map( book => new Book(book)))
+    .then(result => res.status(200).render('pages/searches', {searchArray: result}))
+    .catch( (err) => console.log('Error!', err));
+
+  function Book(object) {
+    this.title = object.volumeInfo.title;
+    this.author = object.volumeInfo.authors;
+    this.description = object.volumeInfo.description || '';
+    this.url = 'https' + object.volumeInfo.imageLinks.thumbnail.slice(4);
+  }
 });
 
 app.get('*', (req, res) => {
