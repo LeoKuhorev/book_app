@@ -31,7 +31,7 @@ app.post('/searches', (req, res) => {
   superagent.get(url)
     .then(result => result.body.items.map( book => new Book(book)))
     .then(result => res.status(200).render('pages/searches', {searchArray: result}))
-    .catch( (err) => console.log('Error!', err));
+    .catch( () => res.status(500).render('pages/error500'));
 
   function Book(object) {
     this.title = object.volumeInfo.title;
@@ -42,7 +42,7 @@ app.post('/searches', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.status(200).render('pages/error');
+  res.status(200).render('pages/error404');
 });
 
 // Ensure that the server is listening for requests
