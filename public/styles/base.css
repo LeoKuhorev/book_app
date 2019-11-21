@@ -12,6 +12,7 @@ header, footer {
 }
 header {
   height: 3rem;
+  margin-bottom: 3rem;
 }
 
 footer {
@@ -19,4 +20,15 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+@media(min-width: 960px) {
+  main {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  fieldset, form {
+    width: 800px;
+  }
 }
