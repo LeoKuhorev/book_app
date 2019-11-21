@@ -1,10 +1,11 @@
-.books {
-  width: 100%;
+header > h1 {
+  padding: 1rem;
 }
 
-.book {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+h2 {
+  height: 2rem;
+  line-height: 2rem;
+  background: #494949;
+  color: white;
+  text-align: center;
 }
