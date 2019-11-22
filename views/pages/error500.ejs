@@ -5,7 +5,16 @@
   <title>ERROR</title>
 </head>
 <body class="flex-container">
+  <header>
+    <% include ../partials/header %>
+    <h2>ERROR</h2>
+  </header>
+
   <h1>500 - Server error</h1>
   <p> <%= data %> </p>
+  
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
 </body>
 </html>

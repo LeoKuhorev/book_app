@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 app.post('/searches', searchBook);
 
 app.get('*', (req, res) => {
-  res.status(200).render('pages/error404');
+  res.status(404).render('pages/error404');
 });
 
 
