@@ -71,10 +71,64 @@ form > button {
 .book h4 {
   font-style: italic;
   margin-bottom: 1rem;
+  font-family: 'Kavivanar', cursive;
+  font-weight: 600;
 }
 
 .book p {
   text-align: justify;
   line-height: 1.5;
+  font-family: 'Lato', sans-serif;
 }
 /* SEARCH PAGE END */
+
+/* Icons */
+.icon {
+  text-decoration: none;
+}
+
+  .icon:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 1.25em;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon > .label {
+    display: none;
+  }
+
+ul.icons {
+  line-height: 3rem;
+  cursor: default;
+  list-style: none;
+  padding-left: 0;
+}
+
+  ul.icons li {
+    display: inline-block;
+    padding-left: 0;
+  }
+
+  ul.icons a {
+    color: #7a7c7e;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    border: 0;
+  }
+
+  .copyright {
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Kavivanar|Lato&display=swap');
 body {
   width: 100%;
   margin: 0 auto;
@@ -16,7 +17,7 @@ header {
 }
 
 footer {
-  height: 2rem;
+  height: 3rem;
   position: fixed;
   bottom: 0;
   left: 0;
