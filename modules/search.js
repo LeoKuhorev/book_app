@@ -9,12 +9,15 @@ function Book(book) {
   this.url = book.imageLinks ? 'https' + book.imageLinks.thumbnail.slice(4) : './img/book-icon.png';
 }
 
-exports.searchBook = function searchBook(req, res) {
+exports.searchBook = async function searchBook(req, res) {
   let criteria = req.body.search[1] === 'author' ? 'inauthor' : 'intitle';
   const url = `https://www.googleapis.com/books/v1/volumes?q=${criteria}:${req.body.search[0]}`
 
-  superagent.get(url)
-    .then(result => result.body.items.map( book => new Book(book.volumeInfo)))
-    .then(result => res.status(200).render('pages/searches', {searchArray: result}))
-    .catch( (err) => res.status(500).render('pages/error500', {data: err}));
+  try {
+    let result = await superagent.get(url);
+    result = result.body.items.map( book => new Book(book.volumeInfo));
+    res.status(200).render('pages/searches', {searchArray: result});
+  } catch(err) {
+    res.status(500).render('pages/error500', {data: err});
+  }
 };
