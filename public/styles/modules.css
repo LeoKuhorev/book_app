@@ -58,7 +58,9 @@ form > button {
 }
 
 .book img {
-  min-height: 300px;
+  min-height: 250px;
+  max-height: 400px;
+  max-width: 250px;
 }
 
 .book h3 {
