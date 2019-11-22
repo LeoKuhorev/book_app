@@ -15,8 +15,16 @@ exports.searchBook = async function searchBook(req, res) {
 
   try {
     let result = await superagent.get(url);
-    result = result.body.items.map( book => new Book(book.volumeInfo));
-    res.status(200).render('pages/searches', {searchArray: result});
+    if(result.body.totalItems > 0) {
+      result = result.body.items.map( book => new Book(book.volumeInfo));
+      res.status(200).render('pages/searches', {searchArray: result} );
+    } else {
+      res.status(200).render('pages/searches', {
+        searchArray: false,
+        searchCriteria: req.body.search[0],
+        searchType: req.body.search[1]
+      } );
+    }
   } catch(err) {
     res.status(500).render('pages/error500', {data: err});
   }

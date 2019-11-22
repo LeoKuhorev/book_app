@@ -23,7 +23,9 @@ This app has been develeoped using Javascript with the following dependencies, o
 
 Color Palette: 
 
- ![Color Palette](./public/img/color-palette.jpg) ;
+
+ ![Color Palette](./public/img/color-palette.jpg)
+
 
 It has been deployed to: https://lk-rs-booklist.herokuapp.com/
 
