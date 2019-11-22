@@ -34,6 +34,7 @@ form > input, form > button, .label {
 form > button {
   background: black;
   color: white;
+  cursor: pointer;
 }
 /* INDEX PAGE END */
 
