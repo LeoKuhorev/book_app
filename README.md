@@ -21,6 +21,10 @@ This app has been develeoped using Javascript with the following dependencies, o
   "express": "^4.17.1",
   "superagent": "^5.1.0"
 
+Color Palette: 
+
+ ![Color Palette](./img/color-palette.jpg) ;
+
 It has been deployed to: https://lk-rs-booklist.herokuapp.com/
 
 
