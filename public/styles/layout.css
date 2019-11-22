@@ -1,6 +1,10 @@
 header > h1 {
   padding: 1rem;
 }
+header > h1 > a {
+  color: white;
+  text-decoration: none;
+}
 
 h2 {
   height: 2rem;
