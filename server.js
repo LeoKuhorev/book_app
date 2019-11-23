@@ -7,6 +7,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const pg = require('pg');
 
 // Application setup
 const app = express();
@@ -14,6 +15,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.urlencoded({extended: true})); //allows working with encoded data from APIs
 app.set('view engine', 'ejs');
+const client = new pg.Client(process.env.DATABASE_URL);
+
+client.connect();
+client.on('error', err => console.log(err));
 
 // Bringing in modules
 const Book = require(path.join(__dirname, 'modules', 'search.js'));
@@ -23,9 +28,7 @@ const searchBook = Book.searchBook;
 // Serving static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.status(200).render('pages/index');
-});
+app.get('/', showSavedBooks);
 
 app.get('/searches', (req, res) => {
   res.status(200).render('pages/searches/new');
@@ -36,6 +39,21 @@ app.post('/searches', searchBook);
 app.get('*', (req, res) => {
   res.status(404).render('pages/err/error404');
 });
+
+
+
+async function showSavedBooks(req, res) {
+  let sql = 'SELECT * FROM books;';
+  try {
+    let result = await client.query(sql);
+    res.render('pages/index', { sqlResults: result.rows})
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+
+
 
 
 // Ensure that the server is listening for requests

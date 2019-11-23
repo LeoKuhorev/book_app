@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <% include ../partials/head %>
+  <title>Books API</title>
 </head>
 <body>
-  Hello world
+  <header>
+    <% include ../partials/header %>
+    <h2>Saved <%= sqlResults.length %> Books</h2>
+  </header>
+  <main>
+    <section class="books">
+      <% if(sqlResults) { %>
+        <% sqlResults.forEach( book => { %>
+          <div class="book flex-container">
+            <div class="image">
+              <img src= <%= book.url; %> alt="<%= book.title; %>">
+            </div>
+            <h3> <%= book.title; %> </h3>
+            <h4> <%= book.author; %> </h4>
+            <p><%= book.description; %> </p>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="flex-container">
+          <h3> No books with <%= searchType %> <%= searchCriteria %> found. Please refine search criteria and <a href="./">try again</a> </h3>
+        </div>
+      <% }; %>
+    </section>
+  </main>
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
 </body>
 </html>
