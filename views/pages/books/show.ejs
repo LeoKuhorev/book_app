@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../../partials/head %>
+  <title>Books API</title>
+</head>
+<body>
+  <header>
+    <% include ../../partials/header %>
+    <h2><%= book.title %> Details</h2>
+  </header>
+  <main>
+    <section class="books">
+      <% include ./detail %>
+    </section>
+  </main>
+  <footer>
+    <% include ../../partials/footer %>
+  </footer>
+</body>
+</html>

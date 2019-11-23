@@ -1,0 +1,10 @@
+<div class="book flex-container">
+  <div class="image">
+    <img src= <%= book.url === './img/book-icon.png' ? '../img/book-icon.png' : book.url %> alt="<%= book.title; %>">
+  </div>
+  <h3> <%= book.title; %> </h3>
+  <h4> <%= book.author; %> </h4>
+  <p><%= book.description; %> </p>
+  <p><%= book.isbn; %> </p>
+  <p><%= book.bookshelf; %> </p>
+</div>

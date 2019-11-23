@@ -33,8 +33,10 @@ app.get('/', showSavedBooks);
 app.get('/searches', (req, res) => {
   res.status(200).render('pages/searches/new');
 });
-
 app.post('/searches', searchBook);
+
+app.get('/books/:book_id', showBookDetails);
+
 
 app.get('*', (req, res) => {
   res.status(404).render('pages/err/error404');
@@ -46,13 +48,21 @@ async function showSavedBooks(req, res) {
   let sql = 'SELECT * FROM books;';
   try {
     let result = await client.query(sql);
-    res.render('pages/index', { sqlResults: result.rows})
+    res.render('pages/index', { sqlResults: result.rows })
   } catch(err) {
     console.log(err);
   }
 }
 
-
+async function showBookDetails(req, res) {
+  let sql = 'SELECT * FROM books WHERE id=$1;';
+  try {
+    let result = await client.query(sql, [req.params.book_id]);
+    res.status(200).render('pages/books/show', { book: result.rows[0] });
+  } catch(err) {
+    console.log(err);
+  }
+}
 
 
 
