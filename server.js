@@ -27,10 +27,14 @@ app.get('/', (req, res) => {
   res.status(200).render('pages/index');
 });
 
+app.get('/searches', (req, res) => {
+  res.status(200).render('pages/searches/new');
+});
+
 app.post('/searches', searchBook);
 
 app.get('*', (req, res) => {
-  res.status(404).render('pages/error404');
+  res.status(404).render('pages/err/error404');
 });
 
 

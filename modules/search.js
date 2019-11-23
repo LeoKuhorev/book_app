@@ -18,16 +18,15 @@ exports.searchBook = async function searchBook(req, res) {
     let result = await superagent.get(url);
     if(result.body.totalItems > 0) {
       result = result.body.items.map( book => new Book(book.volumeInfo));
-      console.log(result);
-      res.status(200).render('pages/searches', {searchArray: result} );
+      res.status(200).render('pages/searches/show', {searchArray: result} );
     } else {
-      res.status(200).render('pages/searches', {
+      res.status(200).render('pages/searches/show', {
         searchArray: false,
         searchCriteria: req.body.search[0],
         searchType: req.body.search[1]
       } );
     }
   } catch(err) {
-    res.status(500).render('pages/error500', {data: err});
+    res.status(500).render('pages/err/error500', {data: err});
   }
 };
