@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <% include ../partials/head %>
-  <title>Search</title>
+  <% include ../partials/head %>
+  <title>Books API</title>
 </head>
 <body>
   <header>
     <% include ../partials/header %>
-    <h2>Search by Title or Author</h2>
+    <h2>Saved <%= sqlResults.length %> Books</h2>
   </header>
   <main>
-    <form action="/searches" method="POST">
-      <input type="text" name="search" placeholder="Enter a title or author" required>
-      <fieldset>
-        <div class="label">
-          <label for="title">
-            <span>Title</span>
-            <input type="radio" name="search" value="title" required>
-          </label>
+    <section class="books">
+      <% if(sqlResults) { %>
+        <% sqlResults.forEach( book => { %>
+          <div class="book flex-container">
+            <div class="image">
+              <img src= <%= book.url; %> alt="<%= book.title; %>">
+            </div>
+            <h3> <%= book.title; %> </h3>
+            <h4> <%= book.author; %> </h4>
+            <p><%= book.description; %> </p>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="flex-container">
+          <h3> No books with <%= searchType %> <%= searchCriteria %> found. Please refine search criteria and <a href="./">try again</a> </h3>
         </div>
-        <div class="label">
-          <label for="author">
-            <span>Author</span>
-            <input type="radio" name="search" value="author" required>
-          </label>
-        </div>
-      </fieldset>
-      <button type="submit">Search the Google Books API</button>
-    </form>
+      <% }; %>
+    </section>
   </main>
   <footer>
-      <% include ../partials/footer %>
+    <% include ../partials/footer %>
   </footer>
 </body>
 </html>
