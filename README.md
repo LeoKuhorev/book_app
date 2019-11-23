@@ -2,7 +2,7 @@
 
 **Authors**: Leo Kuhharau and Roman Sydoruk
 
-**Version**: 1.0 Alpha
+**Version**: 1.1 Beta
 
 
 ## Overview
@@ -21,6 +21,8 @@ This app has been develeoped using Javascript with the following dependencies, o
   "express": "^4.17.1",
   "superagent": "^5.1.0"
 
+  *SQL schema
+
 Color Palette: 
 
 
@@ -36,59 +38,55 @@ It has been deployed to: https://lk-rs-booklist.herokuapp.com/
 
 ## Time Estimate
 
-Number and name of feature: **Server setup**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 30 min
+Estimate of time needed to complete: _____
 
-Start time: 4:30 PM
+Start time: _____
 
-Finish time: 5:00 PM
+Finish time: _____
 
-Actual time needed to complete: 30 min
+Actual time needed to complete: _____
 
+Number and name of feature: ________________________________
 
-Number and name of feature: **Search Google Books API** 
+Estimate of time needed to complete: _____
 
-Estimate of time needed to complete: 30 min
+Start time: _____
 
-Start time: 5:00 PM
+Finish time: _____
 
-Finish time: 5:30 PM
+Actual time needed to complete: _____
 
-Actual time needed to complete: 30 min
+Number and name of feature: ________________________________
 
+Estimate of time needed to complete: _____
 
-Number and name of feature: **Browse search results**
+Start time: _____
 
-Estimate of time needed to complete: 1 hr
+Finish time: _____
 
-Start time: 6:30 PM
+Actual time needed to complete: _____
 
-Finish time: 7:30 PM
+Number and name of feature: ________________________________
 
-Actual time needed to complete: 1 hr
+Estimate of time needed to complete: _____
 
+Start time: _____
 
-Number and name of feature: **Logging errors**
+Finish time: _____
 
-Estimate of time needed to complete: 15 min
+Actual time needed to complete: _____
 
-Start time: 7:30 PM
+Number and name of feature: ________________________________
 
-Finish time: 7:45 PM
+Estimate of time needed to complete: _____
 
-Actual time needed to complete: 15 min
+Start time: _____
 
+Finish time: _____
 
-Number and name of feature: **Styling**
-
-Estimate of time needed to complete: 2 hrs
-
-Start time: 7:45 PM
-
-Finish time: 9:15 PM
-
-Actual time needed to complete: 1.5 hrs [*just initial styling]
+Actual time needed to complete: _____
 
 
 

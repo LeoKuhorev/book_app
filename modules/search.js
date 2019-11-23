@@ -7,6 +7,7 @@ function Book(book) {
   this.author = book.authors || 'No author available';
   this.description = book.description || 'No description available';
   this.url = book.imageLinks ? 'https' + book.imageLinks.thumbnail.slice(4) : './img/book-icon.png';
+  this.isbn = book.industryIdentifiers ? `${book.industryIdentifiers[0].type} ${book.industryIdentifiers[0].identifier}` : 'No isbn available';
 }
 
 exports.searchBook = async function searchBook(req, res) {
@@ -17,6 +18,7 @@ exports.searchBook = async function searchBook(req, res) {
     let result = await superagent.get(url);
     if(result.body.totalItems > 0) {
       result = result.body.items.map( book => new Book(book.volumeInfo));
+      console.log(result);
       res.status(200).render('pages/searches', {searchArray: result} );
     } else {
       res.status(200).render('pages/searches', {
