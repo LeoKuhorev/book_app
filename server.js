@@ -36,6 +36,7 @@ app.get('/searches', (req, res) => {
 app.post('/searches', searchBook);
 
 app.get('/books/:book_id', showBookDetails);
+app.post('/books', saveToDatabase);
 
 
 app.get('*', (req, res) => {
@@ -62,6 +63,23 @@ async function showBookDetails(req, res) {
   } catch(err) {
     console.log(err);
   }
+}
+
+async function saveToDatabase(req, res) {
+  const r = req.body;
+  let sql = 'INSERT INTO books (title, author, description, url, isbn, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;';
+  try {
+    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf]);
+    sql = 'SELECT * FROM books WHERE id=$1;';
+    let id = result.rows[0].id;
+    console.log(id);
+    result = await client.query(sql, [id]);
+    console.log(result);
+    res.status(200).render('pages/books/show', { book: result.rows[0] });
+  } catch(err) {
+    console.log(err);
+  }
+
 }
 
 
