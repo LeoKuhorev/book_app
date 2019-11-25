@@ -8,7 +8,7 @@ function testHandler(event) {
   let $target = $(event.target);
   if($target.is('button')) {
     const $hideDiv = $(this).find('.show-hide');
-    if($hideDiv.is(':visible') && $(this).find('[name=bookshelf]').val() !== '' 
+    if($hideDiv.is(':visible') && $(this).find('[name=bookshelf]').val() !== ''
     || !$hideDiv.is(':visible')) {
       $hideDiv.toggle(200);
       let $button = $(this).find('button');
@@ -23,5 +23,5 @@ $bookDiv.on('click', testHandler);
 
 
 $(() => {
-  $hideDivs.hide()
+  $hideDivs.hide();
 });
