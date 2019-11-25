@@ -1,5 +1,5 @@
 /* INDEX PAGE START */
-form {
+form, .show-hide {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,10 +11,10 @@ fieldset {
   width: 100%;
 }
 
-form > input, form > button, .label {
+form > input, form > button, .label, div > input, div > textarea, .database {
   box-sizing: border-box;
   width: 100%;
-  height: 3rem;
+  height: 3.5rem;
   margin-top: 1rem;
   border-radius: 5px;
   border: none;
@@ -85,8 +85,25 @@ form > button {
 }
 /* SEARCH PAGE END */
 
-
-
+/* EDIT FORM */
+.select-button {
+  height: 4rem;
+  font-size: 120%;
+}
+.edit-form{
+  width: 100%;
+  margin: 0 auto;
+}
+.show-hide {
+  width: 100%;
+}
+div > textarea {
+  height: 10rem;
+}
+.database {
+  width: 50%;
+  align-self: flex-end;
+}
 /* FOOTER START */
 .icon {
   text-decoration: none;

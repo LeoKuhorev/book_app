@@ -12,7 +12,7 @@ function testHandler(event) {
     || !$hideDiv.is(':visible')) {
       $hideDiv.toggle(200);
       let $button = $(this).find('button');
-      $button.text() === 'Select This Book' ? $button.text('Add to Database') : $button.text('Select This Book');
+      $button.text() === 'Select This Book' ? $button.text('Add to Database') && $button.addClass('database') : $button.text('Select This Book') && $button.removeClass('database');
     }
   }
 }
