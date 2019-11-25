@@ -15,8 +15,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.urlencoded({extended: true})); //allows working with encoded data from APIs
 app.set('view engine', 'ejs');
-const client = new pg.Client(process.env.DATABASE_URL);
 
+// Connecting to DB
+const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.log(err));
 
@@ -29,19 +30,12 @@ const searchBook = Book.searchBook;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', showSavedBooks);
-
-app.get('/searches', (req, res) => {
-  res.status(200).render('pages/searches/new');
-});
+app.get('/searches', (req, res) => res.status(200).render('pages/searches/new'));
 app.post('/searches', searchBook);
-
 app.get('/books/:book_id', showBookDetails);
 app.post('/books', saveToDatabase);
 
-
-app.get('*', (req, res) => {
-  res.status(404).render('pages/err/error404');
-});
+app.get('*', (req, res) => res.status(404).render('pages/err/error404'));
 
 
 
@@ -49,7 +43,7 @@ async function showSavedBooks(req, res) {
   let sql = 'SELECT * FROM books;';
   try {
     let result = await client.query(sql);
-    res.render('pages/index', { sqlResults: result.rows })
+    res.status(200).render('pages/index', { sqlResults: result.rows })
   } catch(err) {
     console.log(err);
   }
@@ -72,16 +66,12 @@ async function saveToDatabase(req, res) {
     let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf]);
     sql = 'SELECT * FROM books WHERE id=$1;';
     let id = result.rows[0].id;
-    console.log(id);
     result = await client.query(sql, [id]);
-    console.log(result);
     res.status(200).render('pages/books/show', { book: result.rows[0] });
   } catch(err) {
     console.log(err);
   }
-
 }
-
 
 
 // Ensure that the server is listening for requests
