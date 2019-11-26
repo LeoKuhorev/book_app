@@ -6,7 +6,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.header, footer {
+header, footer {
   width: 100%;
   background: black;
   color: white;

@@ -6,7 +6,7 @@ const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
-client.on('error', err => console.log(err));
+client.on('error', err => errorHandler(err, req, res) );
 
 // Object for holding callback functions
 const Callback = {};
@@ -16,7 +16,7 @@ function Book(book) {
   this.title = book.title || 'No title available';
   this.author = book.authors || 'No author available';
   this.description = book.description || 'No description available';
-  this.url = book.imageLinks ? 'https' + book.imageLinks.thumbnail.slice(4) : './img/book-icon.png';
+  this.url = book.imageLinks ? 'https' + book.imageLinks.thumbnail.slice(4) : '../img/book-icon.png';
   this.isbn = book.industryIdentifiers ? `${book.industryIdentifiers[0].type} ${book.industryIdentifiers[0].identifier}` : 'No isbn available';
 }
 
