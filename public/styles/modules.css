@@ -11,6 +11,7 @@ fieldset {
   width: 100%;
 }
 
+
 form > input, .label, div > input, div > textarea, .database {
   box-sizing: border-box;
   width: 100%;
@@ -98,6 +99,18 @@ div > textarea {
 }
 /* EDIT FORM END */
 
+/* VIEW DETAIL BTN */
+.book button {
+ font-size: 110%;
+  width: 35%;
+  height: 4rem;
+  background: black;
+  border-radius: 5px;
+}
+.book a {
+  text-decoration: none;
+  color: white
+}
 
 /* FOOTER START */
 .icon {
