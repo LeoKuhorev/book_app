@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.urlencoded({extended: true})); //allows working with encoded data from APIs
 app.set('view engine', 'ejs');
 
-// Bringing in modules
+// Importing callback functions
 const Callback = require(path.join(__dirname, 'modules', 'callbacks.js'));
 const searchBook = Callback.searchBook;
 const showSavedBooks = Callback.showSavedBooks;

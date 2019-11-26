@@ -8,6 +8,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.log(err));
 
+// Object for holding callback functions
 const Callback = {};
 
 // Book constructor
