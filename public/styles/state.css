@@ -1,3 +1,7 @@
 .icons a:hover {
   color: #fff;
 }
+
+#ham-icon:hover {
+  color: #7a7c7e;
+}

@@ -11,12 +11,13 @@ fieldset {
   width: 100%;
 }
 
-form > input, form > button, .label, .show-hide > input, .show-hide > textarea, .database {
+
+form > input, .label, div > input, div > textarea, .database {
   box-sizing: border-box;
   width: 100%;
   height: 3.5rem;
   margin-top: 1rem;
-  border-radius: 5px;
+  border-radius: 3px;
   border: none;
   padding: 0.5rem;
 }
@@ -31,11 +32,6 @@ form > input, form > button, .label, .show-hide > input, .show-hide > textarea, 
   margin-right: 5rem;
 }
 
-form > button {
-  background: black;
-  color: white;
-  cursor: pointer;
-}
 /* INDEX PAGE END */
 
 
@@ -48,14 +44,14 @@ form > button {
 .book {
   background: #d9d9d9;
   margin: 2rem;
-  padding: 3rem;
-  border-radius: 5px;
+  padding: 2rem 1.5rem;
+  border-radius: 3px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
 }
 
 .book img {
-  min-height: 300px;
-  max-width: 250px;
+  min-height: 250px;
+  max-width: 200px;
 }
 
 .image {
@@ -65,10 +61,11 @@ form > button {
 }
 
 .book h3 {
-  font-size: 18pt;
+  font-size: 14pt;
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
   margin: 0.5rem;
+  text-align: center;
 }
 
 .book h4 {
@@ -85,11 +82,7 @@ form > button {
 }
 /* SEARCH PAGE END */
 
-/* EDIT FORM */
-.select-button {
-  height: 4rem;
-  font-size: 120%;
-}
+/* EDIT FORM START */
 .edit-form{
   width: 100%;
   margin: 0 auto;
@@ -104,6 +97,7 @@ div > textarea {
   width: 50%;
   align-self: flex-end;
 }
+/* EDIT FORM END */
 
 /* VIEW DETAIL BTN */
 .book button {
@@ -174,6 +168,25 @@ display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.button {
+  box-sizing: border-box;
+  height: 3.5rem;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 3px;
+  border: none;
+  padding: 0.5rem;
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-size: 110%;
+}
+
+.button * {
+  text-decoration: none;
+  color: white;
 }
 
 @media(min-width: 375px) {
