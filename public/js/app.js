@@ -20,3 +20,5 @@ function testHandler(event) {
 
 $bookDiv.on('click', testHandler);
 
+$( () => $hideDivs.hide());
+
