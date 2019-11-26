@@ -4,9 +4,8 @@ const $bookDiv = $('.book');
 const $hideDivs = $('.show-hide');
 
 
-function testHandler(event) {
-  let $target = $(event.target);
-  if($target.is('button')) {
+function openForm(event) {
+  if($(event.target).is('button')) {
     const $hideDiv = $(this).find('.show-hide');
     if($hideDiv.is(':visible') && $(this).find('[name=bookshelf]').val() !== ''
     || !$hideDiv.is(':visible')) {
@@ -18,7 +17,5 @@ function testHandler(event) {
 }
 
 
-$bookDiv.on('click', testHandler);
-
-$( () => $hideDivs.hide());
+$( () => $bookDiv.on('click', openForm) );
 

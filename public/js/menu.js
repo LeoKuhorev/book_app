@@ -2,19 +2,16 @@
 
 const $menuButton = $('#ham-icon');
 const $navEl = $('nav');
-let isClosed = true;
+let menuIsHidden = true;
 
 function menuHandler(event) {
-  if($(event.target).is('#ham-icon') && isClosed) {
+  if($(event.target).is('#ham-icon') && menuIsHidden) {
     $navEl.slideDown(300);
-    isClosed = false;
+    menuIsHidden = false;
   } else {
     $navEl.slideUp(300);
-    isClosed = true;
+    menuIsHidden = true;
   }
 }
 
-$( () => {
-  $navEl.hide();
-  $(window).on('click', menuHandler);
-});
+$( () => $(window).on('click', menuHandler) );
