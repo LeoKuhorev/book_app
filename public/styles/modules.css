@@ -11,7 +11,7 @@ fieldset {
   width: 100%;
 }
 
-form > input, form > button, .label, div > input, div > textarea, .database {
+form > input, form > button, .label, .show-hide > input, .show-hide > textarea, .database {
   box-sizing: border-box;
   width: 100%;
   height: 3.5rem;
@@ -105,6 +105,18 @@ div > textarea {
   align-self: flex-end;
 }
 
+/* VIEW DETAIL BTN */
+.book button {
+ font-size: 110%;
+  width: 35%;
+  height: 4rem;
+  background: black;
+  border-radius: 5px;
+}
+.book a {
+  text-decoration: none;
+  color: white
+}
 
 /* FOOTER START */
 .icon {
