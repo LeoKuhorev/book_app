@@ -12,41 +12,6 @@ body {
   color: white;
 }
 
-/* HEADER START */
-header {
-  height: 3rem;
-  margin-bottom: 3rem;
-}
-
-#ham-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 3;
-  padding: 0.5rem;
-  cursor: pointer;
-  font-size: 18pt;
-  color: white;
-}
-
-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: 1rem 0 0 0;
-  padding: 2rem 0;
-  background: rgba(0, 0, 0, 0.7);
-  text-align: center;
-}
-
-nav * {
-  color: white;
-  text-decoration: none;
-  padding: 0.3rem;
-}
-/* HEADER END */
-
 footer {
   height: 3rem;
   position: fixed;
