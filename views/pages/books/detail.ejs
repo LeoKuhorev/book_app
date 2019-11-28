@@ -10,7 +10,11 @@
     <p>Bookshelf: <%= book.bookshelf; %> </p>
     <div class="flex-row">
       <button id="update" class="button narrow">Update Details</button>
-      <button id="delete" class="button narrow">Delete Book</button>
+      <form action="/books/<%= book.id %>" method="POST">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="id" value=" <%= book.id %>">
+        <button id="delete" class="button narrow">Delete Book</button>
+      </form>
     </div>
   <% } else { %>
     <a href="/books/<%= book.id %>"><button class="button">View Details</button></a>

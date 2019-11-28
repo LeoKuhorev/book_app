@@ -81,11 +81,27 @@ Callback.saveToDatabase = async function saveToDatabase(req, res) {
   }
 };
 
+// Updating book details
 Callback.updateBookDetails = async function updateBookDetails(req, res) {
   const r = req.body;
   let sql = 'UPDATE books SET title=$1, author=$2, description=$3, url=$4, isbn=$5, bookshelf=$6 WHERE id=$7 RETURNING id;';
-  let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf, r.id]);
-  res.status(200).redirect(`/books/${result.rows[0].id}`);
+  try {
+    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf, r.id]);
+    res.status(200).redirect(`/books/${result.rows[0].id}`);
+  } catch(err) {
+    errorHandler(err, req, res);
+  }
+}
+
+// Deleteing book from database
+Callback.deleteBook = async function deleteBook(req, res) {
+  let sql = 'DELETE FROM books WHERE id=$1;';
+  try {
+    await client.query(sql, [parseInt(req.body.id)]);
+    res.status(200).redirect('/');
+  } catch(err) {
+    errorHandler(err, req, res);
+  }
 }
 
 // HELPER FUNCTIONS:

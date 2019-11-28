@@ -32,6 +32,7 @@ const showSavedBooks = Callback.showSavedBooks;
 const showBookDetails = Callback.showBookDetails;
 const saveToDatabase = Callback.saveToDatabase;
 const updateBookDetails = Callback.updateBookDetails;
+const deleteBook = Callback.deleteBook;
 
 // Routes
 // Serving static folder
@@ -40,9 +41,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', showSavedBooks);
 app.get('/searches', (req, res) => res.status(200).render('pages/searches/new'));
 app.post('/searches', searchBook);
-app.get('/books/:book_id', showBookDetails);
 app.post('/books', saveToDatabase);
+app.get('/books/:book_id', showBookDetails);
 app.put('/books/:book_id', updateBookDetails);
+app.delete('/books/:book_id', deleteBook);
 
 
 app.get('*', (req, res) => res.status(404).render('pages/err/error404'));
