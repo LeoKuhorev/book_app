@@ -16,7 +16,7 @@
           <%- include('./books/detail', {show: false, book: book} ) %>
         <% }); %>
       <% } else { %>
-        <div class="flex-container">
+        <div class="flex-column">
           <h3> No books with <%= searchType %> <%= searchCriteria %> found. Please refine search criteria and <a href="./">try again</a> </h3>
         </div>
       <% }; %>

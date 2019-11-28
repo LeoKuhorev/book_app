@@ -44,66 +44,55 @@ It has been deployed to: https://lk-rs-booklist.herokuapp.com/
 
 ## Time Estimate
 
-Number and name of feature: **_Display saved books_**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 1 hr
+Estimate of time needed to complete: _____
 
-Start time: 6:30 PM
+Start time: _____
 
-Finish time: 7:10 PM
+Finish time: _____
 
-Actual time needed to complete: 40 min
+Actual time needed to complete: _____
 
-Number and name of feature: **_Detailed view_**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 1 hr
+Estimate of time needed to complete: _____
 
-Start time: 7:10 PM
+Start time: _____
 
-Finish time: 7:40 PM
+Finish time: _____
 
-Actual time needed to complete: 30 min
+Actual time needed to complete: _____
 
-Number and name of feature: **_Save books_**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 45 min
+Estimate of time needed to complete: _____
 
-Start time: 7:40 PM
+Start time: _____
 
-Finish time: 8:20 PM
+Finish time: _____
 
-Actual time needed to complete: 40 min
+Actual time needed to complete: _____
 
-Number and name of feature: **_Edit details_**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 1 hr
+Estimate of time needed to complete: _____
 
-Start time: 8:20 PM
+Start time: _____
 
-Finish time: 9:00 PM
+Finish time: _____
 
-Actual time needed to complete: 40 min
+Actual time needed to complete: _____
 
-Number and name of feature: **_Using partials_**
+Number and name of feature: ________________________________
 
-Estimate of time needed to complete: 30 min
+Estimate of time needed to complete: _____
 
-Start time: 9:00 PM
+Start time: _____
 
-Finish time: 9:30 PM
+Finish time: _____
 
-Actual time needed to complete: 30 min
-
-Number and name of feature: **_Styling_**
-
-Estimate of time needed to complete: 2 hr
-
-Start time: 11:00 AM
-
-Finish time: 2:00 PM
-
-Actual time needed to complete: 3 hr
-
+Actual time needed to complete: _____
 
 
 ## Credits and Collaborations

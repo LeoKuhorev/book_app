@@ -1,0 +1,19 @@
+<form class="edit-form" action="/books" method="POST">
+  <div class="show-hide">
+    <input type="text" name="title" placeholder="Title" value="<%= book.title %>">
+    <input type="text" name="author" placeholder="Author" value="<%= book.author %>">
+    <input type="text" name="isbn" placeholder="ISBN" value="<%= book.isbn %>">
+    <input type="text" name="url" placeholder="Image URL" value="<%= book.url %>">
+    <textarea name="description" cols="30" rows="10"><%= book.description %></textarea>
+    <% if(type === 'update') { %>
+      <select name="bookshelf">
+        <% bookshelves.forEach( shelf => { %>
+          <option value="<%= shelf %>"><%= shelf %></option>
+        <% }) %>
+      </select>
+    <% } else { %>
+      <input type="text" name="bookshelf" placeholder="Bookshelf" required>
+    <% } %>
+  </div>
+  <button type="submit" class="button"> <%= type === 'search' ?'Select This Book' : 'Update Book' %></button>
+</form>
