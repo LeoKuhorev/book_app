@@ -13,26 +13,14 @@
     <section class="books">
       <% if(searchArray) { %>
         <% searchArray.forEach( book => { %>
-          <div class="book flex-container">
+          <div class="book flex-column">
             <div class="image">
               <img src= <%= book.url; %> alt="<%= book.title; %>">
             </div>
             <h3> <%= book.title; %> </h3>
             <h4> <%= book.author; %> </h4>
             <p><%= book.description; %> </p>
-
-            <form class="edit-form" action="/books" method="POST">
-              <div class="show-hide">
-                <input type="text" name="title" placeholder="Title" value="<%= book.title %>">
-                <input type="text" name="author" placeholder="Author" value="<%= book.author %>">
-                <input type="text" name="isbn" placeholder="ISBN" value="<%= book.isbn %>">
-                <input type="text" name="url" placeholder="Image URL" value="<%= book.url %>">
-                <textarea name="description" cols="30" rows="10"><%= book.description %></textarea>
-                <input type="text" name="bookshelf" placeholder="Bookshelf" required>
-              </div>
-              
-              <button type="submit" class="button">Select This Book</button>
-            </form>
+            <%- include('../../partials/form', { type: 'search', book: book}) %>
 
           </div>
         <% }); %>
