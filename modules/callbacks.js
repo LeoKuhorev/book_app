@@ -81,6 +81,13 @@ Callback.saveToDatabase = async function saveToDatabase(req, res) {
   }
 };
 
+Callback.updateBookDetails = async function updateBookDetails(req, res) {
+  const r = req.body;
+  let sql = 'UPDATE books SET title=$1, author=$2, description=$3, url=$4, isbn=$5, bookshelf=$6 WHERE id=$7 RETURNING id;';
+  let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf, r.id]);
+  res.status(200).redirect(`/books/${result.rows[0].id}`);
+}
+
 // HELPER FUNCTIONS:
 // Generating a sorted list of unique bookshelves
 async function getBookshelves() {

@@ -1,4 +1,6 @@
-<form class="edit-form" action="/books" method="POST">
+<form class="edit-form" action= <%= type === 'update' ? `/books/${book.id}` : '/books/' %> method="POST">
+  <input type="hidden" name="_method" value="<%= type === 'update' ? 'put' : 'post' %>">
+  <input type="hidden" name="id" value="<%= book.id %>">
   <div class="show-hide">
     <input type="text" name="title" placeholder="Title" value="<%= book.title %>">
     <input type="text" name="author" placeholder="Author" value="<%= book.author %>">
@@ -8,7 +10,7 @@
     <% if(type === 'update') { %>
       <select name="bookshelf">
         <% bookshelves.forEach( shelf => { %>
-          <option value="<%= shelf %>"><%= shelf %></option>
+          <option value="<%= shelf %>" <%= book.bookshelf === shelf ? 'selected' : null %> ><%= shelf %></option>
         <% }) %>
       </select>
     <% } else { %>

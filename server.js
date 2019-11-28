@@ -4,6 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const methodOverride = require('method-override');
 
 // Load Environment variable from the .env
 require('dotenv').config();
@@ -15,12 +16,22 @@ app.use(cors());
 app.use(express.urlencoded({extended: true})); //allows working with encoded data from APIs
 app.set('view engine', 'ejs');
 
+// Using middleware to change browser's POST into PUT
+app.use(methodOverride( (req, res) => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
+    let method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
+
 // Importing callback functions
 const Callback = require(path.join(__dirname, 'modules', 'callbacks.js'));
 const searchBook = Callback.searchBook;
 const showSavedBooks = Callback.showSavedBooks;
 const showBookDetails = Callback.showBookDetails;
 const saveToDatabase = Callback.saveToDatabase;
+const updateBookDetails = Callback.updateBookDetails;
 
 // Routes
 // Serving static folder
@@ -31,6 +42,7 @@ app.get('/searches', (req, res) => res.status(200).render('pages/searches/new'))
 app.post('/searches', searchBook);
 app.get('/books/:book_id', showBookDetails);
 app.post('/books', saveToDatabase);
+app.put('/books/:book_id', updateBookDetails);
 
 
 app.get('*', (req, res) => res.status(404).render('pages/err/error404'));
