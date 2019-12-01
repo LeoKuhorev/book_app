@@ -40,59 +40,42 @@ It has been deployed to: https://lk-rs-booklist.herokuapp.com/
 ## Change Log
 11-20-2019 - App created, and initially styled. App can send a request to Google Books API and show a list of results;
 
-11-23-2019 - On page load only saved books are displayed. Added user ability to edit description and save books into bookshelves;
+11-23-2019 - On page load only saved books are displayed. Added user ability to add details and save books into database;
+
+12-01-2019 - Ability to edit details and delete a book from database added.
 
 ## Time Estimate
 
-Number and name of feature: ________________________________
+Number and name of feature: **_Update details_**
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 6:30 PM
 
-Finish time: _____
+Finish time: 7:45 PM
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr 15 min
 
-Number and name of feature: ________________________________
+Number and name of feature: **_Delete a book from database_**
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 7:45 PM
 
-Finish time: _____
+Finish time: 8:45 PM
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 
-Number and name of feature: ________________________________
+Number and name of feature: **_Styling_**
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 2 hrs
 
-Start time: _____
+Start time: 12:00 AM
 
-Finish time: _____
+Finish time: 2:30 PM
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 hr 30 min
 
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-Number and name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
 
 
 ## Credits and Collaborations
