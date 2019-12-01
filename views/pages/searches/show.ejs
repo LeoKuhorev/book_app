@@ -20,7 +20,12 @@
             <h3> <%= book.title; %> </h3>
             <h4> <%= book.author; %> </h4>
             <p><%= book.description; %> </p>
-            <%- include('../../partials/form', { type: 'search', book: book}) %>
+            <button class="select button">Select This Book</button>
+            <div class="modal">
+              <div class="book">
+                <%- include('../../partials/form', { type: 'search', book: book}) %>
+              </div>
+            </div>
 
           </div>
         <% }); %>

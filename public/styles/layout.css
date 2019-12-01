@@ -1,7 +1,7 @@
 /* HEADER START */
 header {
+  top: 0;
   min-height: 3rem;
-  margin-bottom: 3rem;
 }
 
 header > h1 {
