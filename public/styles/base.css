@@ -10,22 +10,27 @@ header, footer {
   width: 100%;
   background: black;
   color: white;
+  position: fixed;
+  left: 0;
 }
 
 footer {
   height: 3rem;
-  position: fixed;
   bottom: 0;
-  left: 0;
+}
+
+main {
+  margin-top: 7rem;
 }
 
 @media(min-width: 960px) {
   main {
     width: 800px;
-    margin: 0 auto 4rem auto;
+    margin: 7rem auto 4rem auto;
   }
 
-  fieldset, form {
-    width: 800px;
+  .book {
+    max-width: 800px;
+    margin: 2rem auto;
   }
 }

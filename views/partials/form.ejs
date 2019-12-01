@@ -1,12 +1,12 @@
-<form class="edit-form" action= <%= type === 'update' ? `/books/${book.id}` : '/books/' %> method="POST">
+<form class="edit-form flex-column" action= <%= type === 'update' ? `/books/${book.id}` : '/books/' %> method="POST">
   <input type="hidden" name="_method" value="<%= type === 'update' ? 'put' : 'post' %>">
   <input type="hidden" name="id" value="<%= book.id %>">
-  <div class="show-hide">
-    <input type="text" name="title" placeholder="Title" value="<%= book.title %>">
-    <input type="text" name="author" placeholder="Author" value="<%= book.author %>">
-    <input type="text" name="isbn" placeholder="ISBN" value="<%= book.isbn %>">
-    <input type="text" name="url" placeholder="Image URL" value="<%= book.url %>">
-    <textarea name="description" cols="30" rows="10"><%= book.description %></textarea>
+  <div>
+    <input type="text" name="title" placeholder="Title" value="<%= book.title %>" required>
+    <input type="text" name="author" placeholder="Author" value="<%= book.author %>" required>
+    <input type="text" name="isbn" placeholder="ISBN" value="<%= book.isbn %>" required>
+    <input type="text" name="url" placeholder="Image URL" value="<%= book.url %>" required>
+    <textarea name="description" cols="30" rows="10" required><%= book.description %></textarea>
     <% if(type === 'update') { %>
       <select name="bookshelf">
         <% bookshelves.forEach( shelf => { %>
@@ -17,5 +17,5 @@
       <input type="text" name="bookshelf" placeholder="Bookshelf" required>
     <% } %>
   </div>
-  <button type="submit" class="button"> <%= type === 'search' ?'Select This Book' : 'Update Book' %></button>
+  <button type="submit" class="button narrow"> <%= type === 'search' ?'Add to Database' : 'Update Book' %></button>
 </form>

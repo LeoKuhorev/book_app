@@ -1,5 +1,5 @@
 /* INDEX PAGE START */
-form, .show-hide {
+.form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +20,7 @@ form > input, .label, div > input, div > textarea, form select {
   border-radius: 3px;
   border: none;
   padding: 0.5rem;
+  background: white;
 }
 
 .label {
@@ -91,10 +92,7 @@ form > input, .label, div > input, div > textarea, form select {
   width: 100%;
   margin: 0 auto;
 }
-.show-hide {
-  width: 100%;
-  display: none;
-}
+
 div > textarea {
   height: 10rem;
 }

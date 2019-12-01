@@ -10,9 +10,3 @@ $updButton.on('click', () => {
     if($(event.target).is($modalEl)) { $modalEl.fadeOut(300) }
   });
 });
-
-
-$( () => {
-  $('.show-hide').show();
-  
-})
