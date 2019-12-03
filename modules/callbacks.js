@@ -60,7 +60,6 @@ Callback.showBookDetails = async function showBookDetails(req, res) {
     let result = await client.query(sql, [req.params.book_id]);
     let bookshelves = await getBookshelves();
     res.status(200).render('pages/books/show', { book: result.rows[0], bookshelves: bookshelves });
-
   } catch(err) {
     errorHandler(err, req, res);
   }
@@ -122,7 +121,7 @@ Callback.deleteBook = async function deleteBook(req, res) {
 // HELPER FUNCTIONS:
 // Generating a sorted list of unique bookshelves
 async function getBookshelves() {
-  const sql = 'SELECT DISTINCT name FROM bookshelves ORDER BY name ASC;';
+  const sql = 'SELECT DISTINCT ON (LOWER(name)) name FROM bookshelves ORDER BY LOWER(name);';
   try {
     let result = await client.query(sql);
     return result.rows.map( cat => cat.name );
