@@ -44,7 +44,7 @@ Callback.searchBook = async function searchBook(req, res) {
 
 // Showing saved books from database on page load
 Callback.showSavedBooks = async function showSavedBooks(req, res) {
-  let sql = 'SELECT * FROM books;';
+  let sql = 'SELECT books.id AS id, title, author, description, url, isbn, bs.name AS bookshelf FROM books JOIN bookshelves AS bs ON books.bookshelf_id = bs.id ORDER BY LOWER(title) ASC;';
   try {
     let result = await client.query(sql);
     res.status(200).render('pages/index', { sqlResults: result.rows })
@@ -55,7 +55,7 @@ Callback.showSavedBooks = async function showSavedBooks(req, res) {
 
 // Rendering detailed view for any chosen book
 Callback.showBookDetails = async function showBookDetails(req, res) {
-  let sql = 'SELECT * FROM books WHERE id=$1;';
+  let sql = 'SELECT books.id AS id, title, author, description, url, isbn, bs.name AS bookshelf FROM books JOIN bookshelves AS bs ON books.bookshelf_id = bs.id WHERE books.id=$1;';
   try {
     let result = await client.query(sql, [req.params.book_id]);
     let bookshelves = await getBookshelves();
@@ -66,12 +66,26 @@ Callback.showBookDetails = async function showBookDetails(req, res) {
   }
 };
 
+// Save bookshelf if not unique
+async function saveBookshelf(bookshelf) {
+  let sql = 'INSERT INTO bookshelves (name) VALUES ($1) ON CONFLICT (name) DO NOTHING;';
+  try {
+    await client.query(sql, [bookshelf]);
+    sql = 'SELECT id FROM bookshelves WHERE name=$1;';
+    let result = await client.query(sql, [bookshelf]);
+    return result.rows[0].id;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // Saving selected book into database
 Callback.saveToDatabase = async function saveToDatabase(req, res) {
   const r = req.body;
-  let sql = 'INSERT INTO books (title, author, description, url, isbn, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;';
+  let sql = 'INSERT INTO books (title, author, description, url, isbn, bookshelf_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;';
   try {
-    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf]);
+    let shelfId = await saveBookshelf(r.bookshelf);
+    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, shelfId]);
     sql = 'SELECT * FROM books WHERE id=$1;';
     let id = result.rows[0].id;
     result = await client.query(sql, [id]);
@@ -84,9 +98,10 @@ Callback.saveToDatabase = async function saveToDatabase(req, res) {
 // Updating book details
 Callback.updateBookDetails = async function updateBookDetails(req, res) {
   const r = req.body;
-  let sql = 'UPDATE books SET title=$1, author=$2, description=$3, url=$4, isbn=$5, bookshelf=$6 WHERE id=$7 RETURNING id;';
+  let sql = 'UPDATE books SET title=$1, author=$2, description=$3, url=$4, isbn=$5, bookshelf_id=$6 WHERE id=$7 RETURNING id;';
   try {
-    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, r.bookshelf, r.id]);
+    let shelfId = await saveBookshelf(r.bookshelf);
+    let result = await client.query(sql, [r.title, r.author, r.description, r.url, r.isbn, shelfId, r.id]);
     res.status(200).redirect(`/books/${result.rows[0].id}`);
   } catch(err) {
     errorHandler(err, req, res);
@@ -107,10 +122,10 @@ Callback.deleteBook = async function deleteBook(req, res) {
 // HELPER FUNCTIONS:
 // Generating a sorted list of unique bookshelves
 async function getBookshelves() {
-  const sql = 'SELECT DISTINCT bookshelf FROM (SELECT bookshelf FROM books ORDER BY LOWER(bookshelf) ASC) as shelves;';
+  const sql = 'SELECT DISTINCT name FROM bookshelves ORDER BY name ASC;';
   try {
     let result = await client.query(sql);
-    return result.rows.map( cat => cat.bookshelf );
+    return result.rows.map( cat => cat.name );
   } catch(err) {
     console.log(err);
   }
